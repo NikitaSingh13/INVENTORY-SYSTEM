@@ -1,0 +1,12 @@
+/* ==================== */
+/* BASE STYLES          */
+/* ==================== */
+
+/* 
+  Minimal base styles for Vite
+  All application styles are in styles/app.css
+*/
+
+#root {
+  min-height: 100vh;
+}
