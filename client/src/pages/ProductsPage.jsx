@@ -12,6 +12,7 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [view, setView] = useState('catalog'); // 'catalog' or 'form'
   
   // Search, filter, and sort state
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,6 +42,7 @@ const ProductsPage = () => {
     try {
       await createProduct(productData);
       await fetchProducts(); // Refresh list
+      setView('catalog'); // Redirect to catalog
     } catch (err) {
       alert('Failed to add product. Please try again.');
       console.error(err);
@@ -52,6 +54,7 @@ const ProductsPage = () => {
       await updateProduct(editingProduct._id, productData);
       setEditingProduct(null);
       await fetchProducts(); // Refresh list
+      setView('catalog'); // Redirect to catalog
     } catch (err) {
       alert('Failed to update product. Please try again.');
       console.error(err);
@@ -70,10 +73,17 @@ const ProductsPage = () => {
 
   const handleEdit = (product) => {
     setEditingProduct(product);
+    setView('form'); // Show form view
   };
 
   const handleCancelEdit = () => {
     setEditingProduct(null);
+    setView('catalog'); // Return to catalog
+  };
+
+  const handleAddNew = () => {
+    setEditingProduct(null);
+    setView('form'); // Show form view for new product
   };
 
   // Process products: search -> filter -> sort
@@ -154,64 +164,71 @@ const ProductsPage = () => {
         <p>Manage your inventory and track product availability</p>
       </div>
 
-      <ProductForm
-        productToEdit={editingProduct}
-        onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct}
-        onCancel={handleCancelEdit}
-      />
-
-      <div className="products-section">
-        <h2>Product Catalog</h2>
-        
-        {/* Search, Filter, and Sort Controls */}
-        <div className="product-controls">
-          <div className="search-box">
-            <input
-              type="text"
-              placeholder="Search by name or SKU..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-input"
-            />
-          </div>
-
-          <div className="filter-sort-group">
-            <div className="filter-box">
-              <select
-                value={filterStatus}
-                onChange={(e) => setFilterStatus(e.target.value)}
-                className="filter-select"
-              >
-                <option value="all">All Products</option>
-                <option value="in-stock">In Stock</option>
-                <option value="low-stock">Low Stock</option>
-                <option value="out-of-stock">Out of Stock</option>
-              </select>
-            </div>
-
-            <div className="sort-box">
-              <select
-                value={sortOption}
-                onChange={(e) => setSortOption(e.target.value)}
-                className="sort-select"
-              >
-                <option value="name-asc">Name (A–Z)</option>
-                <option value="name-desc">Name (Z–A)</option>
-                <option value="price-asc">Price (Low → High)</option>
-                <option value="price-desc">Price (High → Low)</option>
-                <option value="stock-asc">Stock (Low → High)</option>
-                <option value="stock-desc">Stock (High → Low)</option>
-              </select>
-            </div>
-          </div>
-        </div>
-
-        <ProductTable
-          products={displayProducts}
-          onEdit={handleEdit}
-          onDelete={handleDeleteProduct}
+      {view === 'form' ? (
+        <ProductForm
+          productToEdit={editingProduct}
+          onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct}
+          onCancel={handleCancelEdit}
         />
-      </div>
+      ) : (
+        <>
+          <div className="catalog-header">
+            <h2>Product Catalog</h2>
+            <button className="btn btn-primary" onClick={handleAddNew}>
+              ➕ Add New Product
+            </button>
+          </div>
+          
+          {/* Search, Filter, and Sort Controls */}
+          <div className="product-controls">
+            <div className="search-box">
+              <input
+                type="text"
+                placeholder="Search by name or SKU..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="search-input"
+              />
+            </div>
+
+            <div className="filter-sort-group">
+              <div className="filter-box">
+                <select
+                  value={filterStatus}
+                  onChange={(e) => setFilterStatus(e.target.value)}
+                  className="filter-select"
+                >
+                  <option value="all">All Products</option>
+                  <option value="in-stock">In Stock</option>
+                  <option value="low-stock">Low Stock</option>
+                  <option value="out-of-stock">Out of Stock</option>
+                </select>
+              </div>
+
+              <div className="sort-box">
+                <select
+                  value={sortOption}
+                  onChange={(e) => setSortOption(e.target.value)}
+                  className="sort-select"
+                >
+                  <option value="name-asc">Name (A–Z)</option>
+                  <option value="name-desc">Name (Z–A)</option>
+                  <option value="price-asc">Price (Low → High)</option>
+                  <option value="price-desc">Price (High → Low)</option>
+                  <option value="stock-asc">Stock (Low → High)</option>
+                  <option value="stock-desc">Stock (High → Low)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <ProductTable
+            products={displayProducts}
+            onEdit={handleEdit}
+            onDelete={handleDeleteProduct}
+          />
+        </>
+      )}
     </div>
   );
 };
