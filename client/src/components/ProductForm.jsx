@@ -76,7 +76,7 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
       <h2>{productToEdit ? 'Edit Product' : 'Add New Product'}</h2>
       <form onSubmit={handleSubmit} className="product-form">
         <div className="form-group">
-          <label htmlFor="name">Product Name</label>
+          <label htmlFor="name">Product Name *</label>
           <input
             type="text"
             id="name"
@@ -89,21 +89,21 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="sku">SKU</label>
+          <label htmlFor="sku">SKU *</label>
           <input
             type="text"
             id="sku"
             name="sku"
             value={formData.sku}
             onChange={handleChange}
-            placeholder="Enter SKU"
+            placeholder="e.g., MON-27-FHD"
             required
           />
         </div>
 
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="price">Price ($)</label>
+            <label htmlFor="price">Price ($) *</label>
             <input
               type="number"
               id="price"
@@ -118,7 +118,7 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="stock">Stock</label>
+            <label htmlFor="stock">Current Stock *</label>
             <input
               type="number"
               id="stock"
@@ -132,7 +132,7 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="minStock">Min Stock</label>
+            <label htmlFor="minStock">Min Stock Alert *</label>
             <input
               type="number"
               id="minStock"
@@ -147,14 +147,14 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
         </div>
 
         <div className="form-actions">
-          <button type="submit" className="btn btn-primary">
-            {productToEdit ? 'Update Product' : 'Add Product'}
-          </button>
           {productToEdit && (
-            <button type="button" className="btn btn-secondary" onClick={handleCancelClick}>
+            <button type="button" className="btn btn-secondary btn-large" onClick={handleCancelClick}>
               Cancel
             </button>
           )}
+          <button type="submit" className="btn btn-primary btn-large">
+            {productToEdit ? '✓ Update Product' : '+ Add Product'}
+          </button>
         </div>
       </form>
     </div>

@@ -21,14 +21,18 @@ function App() {
 
   return (
     <div className="app">
+      {/* Hamburger Menu Logic (CSS-Only) */}
+      <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+      
+      {/* Overlay backdrop for mobile menu */}
+      <label htmlFor="nav-toggle" className="nav-overlay"></label>
+      
       <nav className="navbar">
         <div className="navbar-container">
           <div className="nav-brand">
             <h1>Inventory System</h1>
           </div>
           
-          {/* Hamburger Menu Logic (CSS-Only) */}
-          <input type="checkbox" id="nav-toggle" className="nav-toggle" />
           <label htmlFor="nav-toggle" className="nav-burger">
             <span></span>
             <span></span>

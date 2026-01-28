@@ -42,14 +42,16 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
                 <td>
                   <div className="action-buttons">
                     <button
-                      className="btn btn-edit"
+                      className="btn btn-sm btn-edit"
                       onClick={() => onEdit(product)}
+                      title="Edit product"
                     >
-                      Edit
+                    Edit
                     </button>
                     <button
-                      className="btn btn-delete"
+                      className="btn btn-sm btn-delete"
                       onClick={() => handleDelete(product)}
+                      title="Delete product"
                     >
                       Delete
                     </button>

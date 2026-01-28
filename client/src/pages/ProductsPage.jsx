@@ -149,7 +149,10 @@ const ProductsPage = () => {
 
   return (
     <div className="products-page">
-      <h1>Product Management</h1>
+      <div className="page-header">
+        <h1>Product Management</h1>
+        <p>Manage your inventory and track product availability</p>
+      </div>
 
       <ProductForm
         productToEdit={editingProduct}
