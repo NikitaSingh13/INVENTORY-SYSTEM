@@ -1,6 +1,5 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-
 const {
   getAllProducts,
   createProduct,
@@ -8,14 +7,16 @@ const {
   deleteProduct,
   getAnalytics,
   getStockHistory,
-} = require("../controllers/productController");
+} = require('../controllers/productController');
 
-router.get("/", getAllProducts);
-router.post("/", createProduct);
-router.put("/:id", updateProduct);
-router.delete("/:id", deleteProduct);
-router.get("/analytics/summary", getAnalytics);
-router.get("/stock-history", getStockHistory);
-
+/**
+ * Product Routes
+ */
+router.get('/', getAllProducts);
+router.post('/', createProduct);
+router.put('/:id', updateProduct);
+router.delete('/:id', deleteProduct);
+router.get('/analytics/summary', getAnalytics);
+router.get('/stock-history', getStockHistory);
 
 module.exports = router;

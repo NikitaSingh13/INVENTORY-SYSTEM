@@ -49,7 +49,7 @@ const ProductsPage = () => {
 
   const handleUpdateProduct = async (productData) => {
     try {
-      await updateProduct(editingProduct.id, productData);
+      await updateProduct(editingProduct._id, productData);
       setEditingProduct(null);
       await fetchProducts(); // Refresh list
     } catch (err) {

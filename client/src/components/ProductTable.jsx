@@ -7,7 +7,7 @@ import StatusBadge from './StatusBadge';
 const ProductTable = ({ products, onEdit, onDelete }) => {
   const handleDelete = (product) => {
     if (window.confirm(`Are you sure you want to delete "${product.name}"?`)) {
-      onDelete(product.id);
+      onDelete(product._id);
     }
   };
 
@@ -31,7 +31,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product.id}>
+              <tr key={product._id}>
                 <td>{product.name}</td>
                 <td>{product.sku}</td>
                 <td>${product.price.toFixed(2)}</td>
@@ -46,14 +46,14 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
                       onClick={() => onEdit(product)}
                       title="Edit product"
                     >
-                    Edit
+                      ✏️ Edit
                     </button>
                     <button
                       className="btn btn-sm btn-delete"
                       onClick={() => handleDelete(product)}
                       title="Delete product"
                     >
-                      Delete
+                      🗑️ Delete
                     </button>
                   </div>
                 </td>
