@@ -6,10 +6,18 @@ import './styles/app.css';
 
 /**
  * App Component
- * Root component with simple page navigation
+ * Root component with "Elegant SaaS" navigation structure
  */
 function App() {
   const [currentPage, setCurrentPage] = useState('dashboard');
+
+  // Helper to handle navigation and close mobile menu automatically
+  const handleNavClick = (page) => {
+    setCurrentPage(page);
+    // Uncheck the hidden checkbox to close menu on mobile
+    const toggle = document.getElementById('nav-toggle');
+    if (toggle) toggle.checked = false;
+  };
 
   return (
     <div className="app">
@@ -18,22 +26,31 @@ function App() {
           <div className="nav-brand">
             <h1>Inventory System</h1>
           </div>
+          
+          {/* Hamburger Menu Logic (CSS-Only) */}
+          <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+          <label htmlFor="nav-toggle" className="nav-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+
           <div className="nav-links">
             <button
               className={`nav-button ${currentPage === 'dashboard' ? 'active' : ''}`}
-              onClick={() => setCurrentPage('dashboard')}
+              onClick={() => handleNavClick('dashboard')}
             >
               Dashboard
             </button>
             <button
               className={`nav-button ${currentPage === 'products' ? 'active' : ''}`}
-              onClick={() => setCurrentPage('products')}
+              onClick={() => handleNavClick('products')}
             >
               Products
             </button>
             <button
               className={`nav-button ${currentPage === 'history' ? 'active' : ''}`}
-              onClick={() => setCurrentPage('history')}
+              onClick={() => handleNavClick('history')}
             >
               Stock History
             </button>
