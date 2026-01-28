@@ -147,11 +147,9 @@ const ProductForm = ({ productToEdit, onSubmit, onCancel }) => {
         </div>
 
         <div className="form-actions">
-          {productToEdit && (
-            <button type="button" className="btn btn-secondary btn-large" onClick={handleCancelClick}>
-              Cancel
-            </button>
-          )}
+          <button type="button" className="btn btn-secondary btn-large" onClick={handleCancelClick}>
+            Cancel
+          </button>
           <button type="submit" className="btn btn-primary btn-large">
             {productToEdit ? '✓ Update Product' : '+ Add Product'}
           </button>

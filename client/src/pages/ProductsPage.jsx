@@ -12,7 +12,7 @@ const ProductsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [view, setView] = useState('catalog'); // 'catalog' or 'form'
+  const [showForm, setShowForm] = useState(false);
   
   // Search, filter, and sort state
   const [searchTerm, setSearchTerm] = useState('');
@@ -42,7 +42,7 @@ const ProductsPage = () => {
     try {
       await createProduct(productData);
       await fetchProducts(); // Refresh list
-      setView('catalog'); // Redirect to catalog
+      setShowForm(false); // Return to catalog
     } catch (err) {
       alert('Failed to add product. Please try again.');
       console.error(err);
@@ -53,8 +53,8 @@ const ProductsPage = () => {
     try {
       await updateProduct(editingProduct._id, productData);
       setEditingProduct(null);
+      setShowForm(false); // Return to catalog
       await fetchProducts(); // Refresh list
-      setView('catalog'); // Redirect to catalog
     } catch (err) {
       alert('Failed to update product. Please try again.');
       console.error(err);
@@ -73,17 +73,17 @@ const ProductsPage = () => {
 
   const handleEdit = (product) => {
     setEditingProduct(product);
-    setView('form'); // Show form view
+    setShowForm(true);
   };
 
   const handleCancelEdit = () => {
     setEditingProduct(null);
-    setView('catalog'); // Return to catalog
+    setShowForm(false);
   };
 
   const handleAddNew = () => {
     setEditingProduct(null);
-    setView('form'); // Show form view for new product
+    setShowForm(true);
   };
 
   // Process products: search -> filter -> sort
@@ -164,18 +164,18 @@ const ProductsPage = () => {
         <p>Manage your inventory and track product availability</p>
       </div>
 
-      {view === 'form' ? (
+      {showForm ? (
         <ProductForm
           productToEdit={editingProduct}
           onSubmit={editingProduct ? handleUpdateProduct : handleAddProduct}
           onCancel={handleCancelEdit}
         />
       ) : (
-        <>
-          <div className="catalog-header">
+        <div className="products-section">
+          <div className="section-header">
             <h2>Product Catalog</h2>
             <button className="btn btn-primary" onClick={handleAddNew}>
-              ➕ Add New Product
+              + Add New Product
             </button>
           </div>
           
@@ -227,7 +227,7 @@ const ProductsPage = () => {
             onEdit={handleEdit}
             onDelete={handleDeleteProduct}
           />
-        </>
+        </div>
       )}
     </div>
   );

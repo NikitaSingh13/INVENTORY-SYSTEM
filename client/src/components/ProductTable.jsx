@@ -46,14 +46,14 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
                       onClick={() => onEdit(product)}
                       title="Edit product"
                     >
-                      ✏️ Edit
+                      ✏️
                     </button>
                     <button
                       className="btn btn-sm btn-delete"
                       onClick={() => handleDelete(product)}
                       title="Delete product"
                     >
-                      🗑️ Delete
+                      🗑️
                     </button>
                   </div>
                 </td>

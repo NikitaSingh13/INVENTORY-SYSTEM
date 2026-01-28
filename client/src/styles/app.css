@@ -638,6 +638,22 @@ button { font-family: var(--font-sans); }
   color: var(--text-main);
 }
 
+/* Section Header with Button */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 1.875rem;
+  margin: 0;
+  color: var(--text-main);
+}
+
 /* Product Controls Container */
 .product-controls {
   background: var(--bg-surface);
