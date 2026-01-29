@@ -632,6 +632,22 @@ button { font-family: var(--font-sans); }
   margin-top: 3rem;
 }
 
+/* Section Header - Flexbox Layout */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 1.875rem;
+  margin: 0;
+  color: var(--text-main);
+}
+
 .products-section > h2 {
   font-size: 1.875rem;
   margin-bottom: 1.5rem;
@@ -743,6 +759,22 @@ button { font-family: var(--font-sans); }
   .filter-sort-group {
     flex: 3;
     flex-wrap: nowrap;
+  }
+}
+
+/* Mobile Responsive Section Header */
+@media (max-width: 640px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .section-header .btn-primary {
+    width: 100%;
   }
 }
 
