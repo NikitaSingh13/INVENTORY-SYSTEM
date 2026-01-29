@@ -15,6 +15,16 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+//health api to ping backend
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+
 // Middleware
 app.use(cors({
   origin: "*", 

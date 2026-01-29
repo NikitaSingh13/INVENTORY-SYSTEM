@@ -31,7 +31,6 @@ A modern, full-stack inventory management application built with React and Node.
 - Track product changes over time
 
 ### 📱 Responsive Design
-- Mobile-first approach
 - Hamburger menu for mobile devices
 - Smooth animations and transitions
 - Works seamlessly on all screen sizes
