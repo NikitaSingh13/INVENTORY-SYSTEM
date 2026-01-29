@@ -349,14 +349,14 @@ Client
 
 ## 🚢 Deployment
 
-### Frontend (Vercel/Netlify)
+### Frontend (Vercel)
 ```bash
 cd client
 npm run build
 # Upload dist/ folder
 ```
 
-### Backend (Heroku/Railway)
+### Backend (Render)
 ```bash
 cd server
 # Set environment variables in hosting platform
@@ -409,19 +409,6 @@ This project demonstrates:
 - ✅ Error handling and validation
 - ✅ Code organization and architecture
 - ✅ Version control with Git
-
----
-
-## 👨‍💻 Author
-
-Built as a portfolio project to showcase full-stack development skills.
-
-**Technologies Mastered:**
-- Modern React development
-- Node.js backend architecture
-- MongoDB database design
-- RESTful API patterns
-- Responsive UI/UX design
 
 ---
 
