@@ -2,6 +2,8 @@
 
 A modern, full-stack inventory management application built with React and Node.js. Features real-time analytics, product management, and a responsive UI with smooth animations.
 
+🔗 **Live Demo:** [https://inventory-system-gamma-khaki.vercel.app/](https://inventory-system-gamma-khaki.vercel.app/)
+
 ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb)
