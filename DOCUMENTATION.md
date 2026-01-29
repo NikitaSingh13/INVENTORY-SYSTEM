@@ -398,7 +398,7 @@ vercel --prod
 VITE_API_BASE_URL=https://your-backend.com/api
 ```
 
-### Backend (Render/Railway)
+### Backend (Render)
 
 **Environment Variables:**
 ```
@@ -477,38 +477,6 @@ PUT /api/products/507f1f77bcf86cd799439011
 {
   "message": "SKU must be unique"
 }
-```
-
----
-
-## Technologies Deep Dive
-
-### Why These Choices?
-
-**React 19.2**
-- Latest stable version
-- Modern hooks API
-- Efficient virtual DOM
-
-**Vite**
-- 10x faster than CRA
-- Instant HMR
-- Optimized builds
-
-**Custom CSS**
-- Full control
-- Smaller bundle
-- No dependencies
-
-**MongoDB**
-- Flexible schema
-- JSON-like documents
-- Easy scaling
-
-**Express**
-- Lightweight
-- Large ecosystem
-- Industry standard
 
 ---
 
