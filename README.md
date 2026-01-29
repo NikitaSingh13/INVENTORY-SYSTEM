@@ -4,6 +4,8 @@ A modern, full-stack inventory management application built with React and Node.
 
 🔗 **Live Demo:** [https://inventory-system-gamma-khaki.vercel.app/](https://inventory-system-gamma-khaki.vercel.app/)
 
+📚 **Detailed Documentation:** [View DOCUMENTATION.md](./DOCUMENTATION.md)
+
 ![React](https://img.shields.io/badge/React-19.2.0-61DAFB?logo=react)
 ![Node.js](https://img.shields.io/badge/Node.js-Express-339933?logo=node.js)
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?logo=mongodb)
@@ -12,166 +14,79 @@ A modern, full-stack inventory management application built with React and Node.
 
 ## ✨ Features
 
-### 📊 Dashboard Analytics
-- Real-time inventory value calculation
-- Product count and stock monitoring
-- Low stock alerts
-- Visual statistics with status indicators
-
-### 🛍️ Product Management
-- **Create** - Add new products with validation
-- **Read** - View all products in organized table
-- **Update** - Edit existing product details
-- **Delete** - Remove products with confirmation
-- **Search** - Real-time product search
-- **Filter** - Filter by stock status (All, In Stock, Low Stock, Out of Stock)
-- **Sort** - Sort by name, price, or stock quantity
-
-### 📝 Stock History
-- Complete audit trail of all product operations
-- Timestamps for every action
-- Track product changes over time
-
-### 📱 Responsive Design
-- Hamburger menu for mobile devices
-- Smooth animations and transitions
-- Works seamlessly on all screen sizes
+- 📊 **Dashboard Analytics** - Real-time inventory value, stock monitoring, and alerts
+- 🛍️ **Product Management** - Full CRUD operations with search, filter, and sort
+- 📝 **Stock History** - Complete audit trail of all product changes
+- 📱 **Responsive Design** - Works seamlessly on mobile, tablet, and desktop
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **React 19.2** - Latest version with modern hooks
-- **Vite 7.2** - Lightning-fast build tool
-- **Custom CSS** - No UI frameworks, pure CSS3
-- **ES Modules** - Modern JavaScript module system
-
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express 5.2** - Web application framework
-- **MongoDB** - NoSQL database
-- **Mongoose 9.1** - ODM for MongoDB
-- **CORS** - Cross-origin resource sharing
-
-### Architecture
-- **MVC Pattern** - Model-View-Controller architecture
-- **RESTful API** - Standard HTTP methods
-- **Component-Based UI** - Reusable React components
-- **Service Layer** - Separated API logic
+**Frontend:** React 19.2, Vite 7.2, Custom CSS  
+**Backend:** Node.js, Express 5.2, MongoDB, Mongoose 9.1  
+**Architecture:** MVC Pattern, RESTful API, Component-Based UI
 
 ---
 
-## 📁 Project Structure
-
-```
-INVENTORY-SYSTEM/
-├── client/                    # Frontend React application
-│   ├── src/
-│   │   ├── components/       # Reusable UI components
-│   │   │   ├── ProductForm.jsx      - Form for add/edit products
-│   │   │   ├── ProductTable.jsx     - Table display with actions
-│   │   │   └── StatusBadge.jsx      - Stock status indicator
-│   │   ├── pages/            # Page-level components
-│   │   │   ├── DashboardPage.jsx    - Analytics overview
-│   │   │   ├── ProductsPage.jsx     - Product management
-│   │   │   └── StockHistoryPage.jsx - Activity log
-│   │   ├── services/         # API integration
-│   │   │   └── productApi.js        - API calls
-│   │   ├── styles/           # CSS files
-│   │   │   └── app.css              - Global styles
-│   │   ├── App.jsx           # Root component with routing
-│   │   └── main.jsx          # Entry point
-│   ├── package.json
-│   └── vite.config.js
-│
-└── server/                    # Backend Node.js application
-    ├── config/
-    │   └── database.js       # MongoDB connection
-    ├── controllers/
-    │   └── productController.js  - Business logic
-    ├── models/
-    │   ├── Product.js        # Product schema
-    │   └── StockHistory.js   # History schema
-    ├── routes/
-    │   └── products.js       # API routes
-    ├── server.js             # Entry point
-    ├── package.json
-    └── .env                  # Environment variables
-```
-
----
-
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-- **Node.js** (v14 or higher)
-- **npm** or **yarn**
-- **MongoDB Atlas account** (free tier works)
+- Node.js (v14+)
+- npm or yarn
+- MongoDB Atlas account (free tier)
 
 ### Installation
 
-**1. Clone the repository**
+**1. Clone and Navigate**
 ```bash
 git clone <repository-url>
 cd INVENTORY-SYSTEM
 ```
 
-**2. Set up Backend**
+**2. Backend Setup**
 ```bash
 cd server
 npm install
 ```
 
-Create a `.env` file in the `server` directory:
+Create `.env` file in `server` directory:
 ```env
-MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/inventory?retryWrites=true&w=majority
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/inventory
 PORT=5000
 NODE_ENV=development
 ```
 
-Start the backend server:
+Start server:
 ```bash
 npm start
+# Runs at http://localhost:5000
 ```
-Server runs at: `http://localhost:5000`
 
-**3. Set up Frontend** (in a new terminal)
+**3. Frontend Setup** (new terminal)
 ```bash
 cd client
 npm install
 npm run dev
+# Runs at http://localhost:5173
 ```
-App runs at: `http://localhost:5173`
 
 ---
 
-## 📡 API Documentation
+## 📡 API Endpoints
 
-### Base URL
-```
-http://localhost:5000/api
-```
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/products` | Get all products |
+| `POST` | `/api/products` | Create product |
+| `PUT` | `/api/products/:id` | Update product |
+| `DELETE` | `/api/products/:id` | Delete product |
+| `GET` | `/api/products/analytics` | Get dashboard stats |
+| `GET` | `/api/products/stock-history` | Get activity log |
+| `GET` | `/api/health` | Health check |
 
-### Endpoints
-
-| Method | Endpoint | Description | Request Body |
-|--------|----------|-------------|--------------|
-| `GET` | `/products` | Get all products | - |
-| `POST` | `/products` | Create new product | `{ name, sku, price, stock, minStock }` |
-| `PUT` | `/products/:id` | Update product | `{ name?, price?, stock?, minStock? }` |
-| `DELETE` | `/products/:id` | Delete product | - |
-| `GET` | `/products/analytics` | Get dashboard stats | - |
-| `GET` | `/products/stock-history` | Get activity log | - |
-| `GET` | `/health` | Health check | - |
-
-### Example Requests
-
-**Create Product**
-```javascript
-POST /api/products
-Content-Type: application/json
-
+**Request Body Example:**
+```json
 {
   "name": "Laptop",
   "sku": "LAP-001",
@@ -181,241 +96,64 @@ Content-Type: application/json
 }
 ```
 
-**Update Product**
-```javascript
-PUT /api/products/507f1f77bcf86cd799439011
-Content-Type: application/json
-
-{
-  "price": 899.99,
-  "stock": 45
-}
-```
-
 ---
 
-## 🎯 Key Technical Highlights
+## 📁 Project Structure
 
-### 1. Modern React Practices
-- **Hooks-based** - useState, useEffect for state management
-- **Component composition** - Reusable, maintainable components
-- **Props drilling avoided** - Clean data flow
-- **Conditional rendering** - Dynamic UI updates
-
-### 2. MongoDB Integration
-- **Mongoose ODM** - Schema validation and virtuals
-- **Timestamps** - Automatic createdAt/updatedAt
-- **Virtuals** - Computed stockStatus property
-- **Indexes** - Optimized queries
-- **Error handling** - Comprehensive validation
-
-### 3. RESTful API Design
-- **HTTP verbs** - GET, POST, PUT, DELETE
-- **Status codes** - Proper 200, 201, 400, 404, 500
-- **Error responses** - Consistent JSON format
-- **Middleware** - CORS, body parsing, error handling
-- **Route organization** - Modular structure
-
-### 4. User Experience
-- **Real-time search** - Instant filtering
-- **Optimistic updates** - UI updates before server response
-- **Loading states** - Better UX feedback
-- **Error messages** - User-friendly alerts
-- **Form validation** - Client and server-side
-
-### 5. Performance Optimizations
-- **Vite** - Fast HMR and optimized builds
-- **CSS-only animations** - No JavaScript overhead
-- **Efficient re-renders** - Proper state management
-- **MongoDB indexes** - Fast queries
-
----
-
-## 🏗️ Architecture & Data Flow
-
-### Client-Side Flow
 ```
-User Action
-    ↓
-React Component (onClick/onSubmit)
-    ↓
-Service Layer (productApi.js)
-    ↓
-Fetch API Request
-    ↓
-Backend API
-    ↓
-Response
-    ↓
-State Update (useState)
-    ↓
-Component Re-render
-    ↓
-Updated UI
+INVENTORY-SYSTEM/
+├── client/              # React frontend
+│   └── src/
+│       ├── components/  # Reusable components
+│       ├── pages/       # Page components
+│       ├── services/    # API integration
+│       └── styles/      # CSS files
+└── server/              # Node.js backend
+    ├── config/          # Database config
+    ├── controllers/     # Business logic
+    ├── models/          # Data schemas
+    └── routes/          # API routes
 ```
-
-### Server-Side Flow
-```
-HTTP Request
-    ↓
-Express Middleware (CORS, JSON parser)
-    ↓
-Route Handler (routes/products.js)
-    ↓
-Controller (productController.js)
-    ↓
-Model (Product.js, StockHistory.js)
-    ↓
-MongoDB Database
-    ↓
-Response
-    ↓
-Client
-```
-
-### Database Schema
-
-**Product Model**
-```javascript
-{
-  name: String (required, max 100 chars),
-  sku: String (required, unique, uppercase),
-  price: Number (required, min 0),
-  stock: Number (required, min 0),
-  minStock: Number (required, min 0),
-  stockStatus: Virtual (computed),
-  createdAt: Date (auto),
-  updatedAt: Date (auto)
-}
-```
-
-**StockHistory Model**
-```javascript
-{
-  productId: ObjectId (ref: Product),
-  productName: String,
-  action: String (CREATED/UPDATED/DELETED),
-  changes: Object,
-  timestamp: Date (auto)
-}
-```
-
----
-
-## 🎨 Design Features
-
-### CSS Highlights
-- **Gradient backgrounds** - Modern visual appeal
-- **Smooth transitions** - 0.3s ease for all interactions
-- **Hover effects** - Interactive buttons and cards
-- **Responsive grid** - Adapts to screen size
-- **Glass morphism** - Card effects with backdrop blur
-- **Mobile menu** - Pure CSS hamburger animation
-
-### Color Palette
-- Primary: `#667eea` (Purple gradient)
-- Secondary: `#764ba2` (Deep purple)
-- Success: `#10b981` (Green)
-- Warning: `#f59e0b` (Orange)
-- Danger: `#ef4444` (Red)
-- Neutral: `#f9fafb` (Light gray)
-
----
-
-## 🧪 Testing the Application
-
-### Manual Testing Checklist
-
-**Dashboard**
-- [ ] View total products count
-- [ ] View total inventory value
-- [ ] View low stock count
-- [ ] Verify calculations are accurate
-
-**Products Page**
-- [ ] Add new product
-- [ ] Edit existing product
-- [ ] Delete product
-- [ ] Search products
-- [ ] Filter by stock status
-- [ ] Sort by name/price/stock
-
-**Stock History**
-- [ ] View all activities
-- [ ] Check timestamps
-- [ ] Verify action types
 
 ---
 
 ## 🚢 Deployment
 
-### Frontend (Vercel)
-```bash
-cd client
-npm run build
-# Upload dist/ folder
-```
+**Frontend:** Deployed on [Vercel](https://vercel.com)  
+**Backend:** Can be deployed on Render, Railway, or Heroku  
+**Database:** MongoDB Atlas (Cloud)
 
-### Backend (Render)
-```bash
-cd server
-# Set environment variables in hosting platform
-# Deploy via Git or CLI
-```
-
-### Environment Variables
-```env
-# Production
-MONGO_URI=<production-mongodb-url>
-PORT=5000
-NODE_ENV=production
-```
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed deployment instructions.
 
 ---
 
-## 🔐 Security Considerations
+## 🎓 What This Project Demonstrates
 
-- **Input validation** - Mongoose schema validation
-- **SKU uniqueness** - Duplicate prevention
-- **Error handling** - No sensitive data in responses
-- **CORS configured** - Controlled cross-origin requests
-- **Environment variables** - Secrets not in code
-
----
-
-## 📈 Future Enhancements
-
-- [ ] User authentication (JWT)
-- [ ] Role-based access control
-- [ ] Export data to CSV/Excel
-- [ ] Email notifications for low stock
-- [ ] Barcode scanner integration
-- [ ] Multi-warehouse support
-- [ ] Advanced analytics dashboard
-- [ ] Purchase order management
-- [ ] Supplier management
-- [ ] Image upload for products
+✅ Full-stack JavaScript development  
+✅ RESTful API design  
+✅ MongoDB database modeling  
+✅ React hooks and state management  
+✅ Responsive web design  
+✅ Error handling and validation  
 
 ---
 
-## 🎓 Learning Outcomes
+## 📚 Learn More
 
-This project demonstrates:
-- ✅ Full-stack JavaScript development
-- ✅ RESTful API design and implementation
-- ✅ MongoDB database modeling
-- ✅ React state management and hooks
-- ✅ Responsive web design
-- ✅ Error handling and validation
-- ✅ Code organization and architecture
-- ✅ Version control with Git
+For in-depth technical details, architecture explanations, and interview preparation notes, see:
+- [Full Documentation](./DOCUMENTATION.md)
+- Architecture & Data Flow
+- Database Schema Details
+- Design Patterns Used
+- Performance Optimizations
+- Testing Strategies
 
 ---
 
 ## 📝 License
 
-This project is open source and available for educational purposes.
+Open source - Available for educational purposes
 
 ---
 
-**Last Updated:** January 2026
+**Built with ❤️ | January 2026**
