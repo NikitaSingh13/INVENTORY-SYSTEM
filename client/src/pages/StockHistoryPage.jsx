@@ -83,8 +83,8 @@ const StockHistoryPage = () => {
               </thead>
               <tbody>
                 {history.map((log) => (
-                  <tr key={log.id}>
-                    <td>{formatDate(log.timestamp)}</td>
+                  <tr key={log._id}>
+                    <td>{formatDate(log.createdAt)}</td>
                     <td>{log.productName}</td>
                     <td>
                       <span className={`stock-change ${log.change >= 0 ? 'positive' : 'negative'}`}>
