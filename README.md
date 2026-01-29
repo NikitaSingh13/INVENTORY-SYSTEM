@@ -120,7 +120,7 @@ INVENTORY-SYSTEM/
 ## 🚢 Deployment
 
 **Frontend:** Deployed on [Vercel](https://vercel.com)  
-**Backend:** Can be deployed on Render, Railway, or Heroku  
+**Backend:** Deployed on Render 
 **Database:** MongoDB Atlas (Cloud)
 
 See [DOCUMENTATION.md](./DOCUMENTATION.md) for detailed deployment instructions.
